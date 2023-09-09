@@ -15,6 +15,7 @@ jobs:
         compiler: [ clang-latest, gcc-latest, gcc-10, gcc-11, clang-11, clang-12 ]
     env: 
       PREFIX: /usr/local/bin
+      CC: ${{ matrix.cc }}
 
     steps:
     - uses: actions/checkout@v3
