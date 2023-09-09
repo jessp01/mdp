@@ -1,0 +1,29 @@
+name: Build CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        compiler: [ latest, gcc-latest, gcc-10, gcc-11, clang-11, clang-12 ]
+    env: 
+      CC: ${{ matrix.compiler }}
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: make
+      run: make
+    - name: make install
+      run: sudo make install
+    - name: ldd
+      run: ldd ./mpd
+    - name: version
+      run: ./mdp -v
+
