@@ -13,6 +13,8 @@ jobs:
     strategy:
       matrix:
         compiler: [ latest, gcc-latest, gcc-10, gcc-11, clang-11, clang-12 ]
+    env: 
+      PREFIX: /usr/local/bin
 
     steps:
     - uses: actions/checkout@v3
@@ -21,7 +23,7 @@ jobs:
     - name: make install
       run: sudo make install
     - name: ldd
-      run: ldd ./mpd
+      run: ldd $PREFIX/mpd
     - name: version
-      run: ./mdp -v
+      run: $PREFIX/mdp -v
 
