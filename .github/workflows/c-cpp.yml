@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        compiler: [ clang-latest, gcc-latest, gcc-10, gcc-11, clang-11, clang-12 ]
+        cc: [ clang-latest, gcc-latest, gcc-10, gcc-11, clang-11, clang-12 ]
     env: 
       PREFIX: /usr/local/bin
       CC: ${{ matrix.cc }}
@@ -20,7 +20,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: CC ver
-      run: cc -v
+      run: ${CC} -v
     - name: make
       run: make
     - name: make install
