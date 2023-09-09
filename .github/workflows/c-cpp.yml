@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        cc: [ clang-latest, gcc-latest, gcc-10, gcc-11, clang-11, clang-12 ]
+        cc: [ gcc-10, gcc-11, clang-11, clang-14 ]
     env: 
       PREFIX: /usr/local/bin
       CC: ${{ matrix.cc }}
